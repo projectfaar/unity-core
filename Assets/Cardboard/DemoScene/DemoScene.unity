@@ -105,7 +105,7 @@ MonoBehaviour:
   productPrefab: {fileID: 157462, guid: 161b682d4451c49c7801ee8783c9b203, type: 2}
   mapStart: {x: .289999992, y: 1.66999996, z: 1.24000001}
   mapEnd: {x: .689999998, y: 1.25999999, z: 1.24000001}
-  numAisles: 0
+  numAisles: 10
 --- !u!1001 &202588249
 Prefab:
   m_ObjectHideFlags: 0
