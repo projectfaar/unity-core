@@ -27,7 +27,7 @@ public class Teleport : MonoBehaviour {
     CardboardGUI.onGUICallback += this.OnGUI;
 
 	WebCamTexture tex = new WebCamTexture();
-	renderer.material.mainTexture = tex;
+	GetComponent<Renderer>().material.mainTexture = tex;
 	tex.Play();
   }
 
