@@ -24,6 +24,8 @@ public class getProductByName : MonoBehaviour {
 
 		JSONNode node = JSON.Parse(www.text);
 
+		Debug.Log(www.text);
+
 		int status = node["status"].AsInt;
 		if(status == 0) {
 			JSONNode product = node["product"];
