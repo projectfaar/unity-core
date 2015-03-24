@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SimpleJSON;
+using System;
 
 public class ProductInfo {
 	public string name;
@@ -15,7 +16,7 @@ public class ProductInfo {
 }
 
 public class getProductByName : MonoBehaviour {
-	public static string endpoint = "http://localhost:8080/api/getProductByName?name=";
+	public static string endpoint = "http://59a1eab1.ngrok.com/api/getProductByName?name=";
 
 	public static IEnumerator fetch(string name, System.Action<ProductInfo> result) {
 		WWW www = new WWW(endpoint + name);
@@ -29,7 +30,7 @@ public class getProductByName : MonoBehaviour {
 			int id = product["name"].AsInt;
 			int aisle = product["aisle"].AsInt;
 			int aislePosition = product["aislePosition"].AsInt;
-
+			
 			result(new ProductInfo(name, id, aisle, aislePosition));
 		} else {
 			result(null);
