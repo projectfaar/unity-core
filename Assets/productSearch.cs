@@ -7,21 +7,8 @@ public class productSearch : MonoBehaviour {
 	public float numAisles;
 
 	IEnumerator Start() {
-		Debug.Log ("Search");
-
-		yield return StartCoroutine(getProductByName.fetch("potato", info => {
-			if(info != null) {
-				Debug.Log (info.name+" is on aisle "+info.aisle);
-				Debug.Log (mapEnd.x - mapStart.x);
-				Debug.Log ( (info.aisle - 1) / numAisles);
-				
-				Instantiate (productPrefab, new Vector3(mapStart.x + (
-						(mapEnd.x - mapStart.x) * ((info.aisle - 1) / numAisles)
-					), 
-				                                        mapStart.y + ((info.aislePosition / 256f) * (mapEnd.y - mapStart.y)), mapStart.z),
-				             							Quaternion.identity);
-			}
+		yield return StartCoroutine(getShoppingList.fetch("0", info => {
+			Debug.Log (info.name);
 		}));
 	}
-	
 }

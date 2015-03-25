@@ -5,10 +5,12 @@ using System;
 
 
 public class getShoppingList : MonoBehaviour {
-	public static string endpoint = "http://59a1eab1.ngrok.com/api/getShoppingList?token=";
+	public static string endpoint = "http://127.0.0.1:8080/api/";
+	public static string productName = "getProductByName?name=";
+	public static string shoppingList = "getShoppingList?token=";
 	
-	public static IEnumerator fetch(string name, System.Action<arr> result) {
-		WWW www = new WWW(endpoint + name);
+	public static IEnumerator fetch(string name, System.Action<ProductInfo> result) {
+		WWW www = new WWW(endpoint + shoppingList + name);
 		yield return www;
 		
 		JSONNode node = JSON.Parse(www.text);
@@ -18,9 +20,25 @@ public class getShoppingList : MonoBehaviour {
 			JSONNode list = node["list"];
 			JSONArray arr = list.AsArray;
 
-			result(arr);
-		} else {
-			result(null);
+			for(int i = 0; i < list.Count; ++i) {
+				string n = list[i];
+
+				WWW www2 = new WWW(endpoint + productName + n);
+				yield return www2;
+				
+				JSONNode node2 = JSON.Parse(www2.text);
+
+								
+				int status2 = node2["status"].AsInt;
+				if(status2 == 0) {
+					JSONNode product = node2["product"];
+					int id = product["id"].AsInt;
+					int aisle = product["aisle"].AsInt;
+					int aislePosition = product["aislePosition"].AsInt;
+					
+					result(new ProductInfo(name, id, aisle, aislePosition));
+				}
+			}
 		}
 	}
 }
