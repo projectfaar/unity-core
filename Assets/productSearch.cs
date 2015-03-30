@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class productSearch : MonoBehaviour {
 	public GameObject productPrefab;
@@ -9,6 +10,8 @@ public class productSearch : MonoBehaviour {
 	public string listNum = "0";
 	public bool tokenInput = true;
 	public bool updating = false;
+
+	public static Dictionary<string, GameObject> blips;
 	
 	public Cardboard cardboard;
 
@@ -26,11 +29,14 @@ public class productSearch : MonoBehaviour {
 		cardboard.VRModeEnabled = true;
 
 		StartCoroutine(getShoppingList.fetch(listNum, info => {
-			Instantiate (productPrefab, new Vector3(mapStart.x + (
+			GameObject go = Instantiate (productPrefab, new Vector3(mapStart.x + (
 				(mapEnd.x - mapStart.x) * ((info.aisle - 1) / numAisles)
 				), 
 			                                        mapStart.y + ((info.aislePosition / 256f) * (mapEnd.y - mapStart.y)), mapStart.z),
-			             Quaternion.identity);
+			             Quaternion.identity) as GameObject;
+
+			go.tag = info.name;
+			blips[info.name] = go;
 		}));
 	}
 }
