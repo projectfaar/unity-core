@@ -36,7 +36,7 @@ public class getShoppingList : MonoBehaviour {
 					int aisle = product["aisle"].AsInt;
 					int aislePosition = product["aislePosition"].AsInt;
 					
-					result(new ProductInfo(name, id, aisle, aislePosition));
+					result(new ProductInfo(n, id, aisle, aislePosition));
 				}
 			}
 		}
