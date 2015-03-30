@@ -34,6 +34,15 @@ public class SmartCartProtocol : MonoBehaviour {
 			if(parts[0] == "0") {
 				string item = parts[1];
 				Debug.Log ("Retrieved item "+item);
+
+				if(!productSearch.blips.ContainsKey(item)) {
+					Debug.Log ("You weren't supposed to buy "+item+"!");
+					return;
+				}
+
+				Destroy (productSearch.blips[item]);
+			
+				productSearch.blips.Remove(item);
 			}
 		}
 	}
