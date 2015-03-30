@@ -68,7 +68,7 @@ public class CardboardGUIWindow : MonoBehaviour {
 
   void LateUpdate() {
     // Only render window when the overall GUI is enabled.
-    meshRenderer.enabled = CardboardGUI.IsGUIVisible;
+    meshRenderer.enabled = false;
     // Keep material and object scale in sync with rect.
     meshRenderer.material.mainTextureOffset = rect.position;
     meshRenderer.material.mainTextureScale = rect.size;

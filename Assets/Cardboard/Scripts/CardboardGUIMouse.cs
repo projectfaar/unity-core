@@ -46,10 +46,10 @@ public class CardboardGUIMouse : MonoBehaviour {
       pointerVisible = true;  // Draw pointer wherever Unity thinks the mouse is.
       return;
     }
-    if (!CardboardGUI.IsGUIVisible) {
+//    if (!CardboardGUI.IsGUIVisible) {
       pointerVisible = false;  // No GUI == no pointer to worry about.
       return;
-    }
+  //  }
     // Find which CardboardGUIWindow the user's gaze intersects first, if any.
     Ray ray = head.Gaze;
     CardboardGUIWindow hitWindow = null;

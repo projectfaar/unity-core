@@ -23,8 +23,8 @@ public class Teleport : MonoBehaviour {
   void Start() {
     head = Camera.main.GetComponent<StereoController>().Head;
     startingPosition = transform.localPosition;
-    CardboardGUI.IsGUIVisible = true;
-    CardboardGUI.onGUICallback += this.OnGUI;
+    //CardboardGUI.IsGUIVisible = true;
+    //CardboardGUI.onGUICallback += this.OnGUI;
 
 	WebCamTexture tex = new WebCamTexture();
 	GetComponent<Renderer>().material.mainTexture = tex;
@@ -48,12 +48,12 @@ public class Teleport : MonoBehaviour {
 
 	
 
-  void OnGUI() {
+  /*void OnGUI() {
     if (!CardboardGUI.OKToDraw(this)) {
       return;
     }
     if (GUI.Button(new Rect(50, 50, 200, 50), "Reset")) {
       transform.localPosition = startingPosition;
     }
-  }
+  }*/
 }
