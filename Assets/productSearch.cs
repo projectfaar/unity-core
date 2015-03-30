@@ -11,7 +11,7 @@ public class productSearch : MonoBehaviour {
 	public bool tokenInput = true;
 	public bool updating = false;
 
-	public static Dictionary<string, GameObject> blips;
+	public static Dictionary<string, GameObject> blips = new Dictionary<string, GameObject>();
 	
 	public Cardboard cardboard;
 
@@ -35,8 +35,7 @@ public class productSearch : MonoBehaviour {
 			                                        mapStart.y + ((info.aislePosition / 256f) * (mapEnd.y - mapStart.y)), mapStart.z),
 			             Quaternion.identity) as GameObject;
 
-			go.tag = info.name;
-			blips[info.name] = go;
+			blips.Add(info.name, go);
 		}));
 	}
 }

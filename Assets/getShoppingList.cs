@@ -5,7 +5,7 @@ using System;
 
 
 public class getShoppingList : MonoBehaviour {
-	public static string endpoint = "http://43468d42.ngrok.com/api/";
+	public static string endpoint = "http://1e299f47.ngrok.com/api/";
 	public static string productName = "getProductByName?name=";
 	public static string shoppingList = "getShoppingList?token=";
 	
