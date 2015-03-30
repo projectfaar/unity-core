@@ -29,7 +29,12 @@ public class SmartCartProtocol : MonoBehaviour {
 	void Update() {
 		if(client.Available > 0) {
 			string si = reader.ReadLine();
-			Debug.Log (si);
+			string[] parts = si.Split(',');
+
+			if(parts[0] == "0") {
+				string item = parts[1];
+				Debug.Log ("Retrieved item "+item);
+			}
 		}
 	}
 
